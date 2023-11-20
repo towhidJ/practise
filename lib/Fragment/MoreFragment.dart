@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:practise/data/more_list_item.dart';
 
-class MoreFragment extends StatelessWidget {
+class MoreFragment extends StatefulWidget {
   const MoreFragment({super.key});
+  @override
+  State<StatefulWidget> createState() => _MoreFragmentState();
+}
+
+class _MoreFragmentState extends State<MoreFragment> {
+  bool isSwitched = false;
 
   @override
   Widget build(BuildContext context) {
@@ -99,8 +106,48 @@ class MoreFragment extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Container(
-              height: 500,
-              // color: Colors.grey,
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(
+                            left: 10,
+                          ),
+                          child:
+                              Text("Enable/Disable Biometric Authentication"),
+                        ),
+                        Switch(
+                            value: isSwitched,
+                            onChanged: (value) {
+                              setState(() {
+                                isSwitched = value;
+                              });
+                            })
+                      ],
+                    ),
+                    Expanded(
+                      child: ListView.separated(
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              child: SizedBox(
+                                  height: 47, child: morelistItem[index]),
+                            );
+                          },
+                          separatorBuilder: (context, index) {
+                            return Divider(
+                              height: 0,
+                              thickness: 1,
+                            );
+                          },
+                          itemCount: morelistItem.length),
+                    )
+                  ]),
             ),
           ),
         ],

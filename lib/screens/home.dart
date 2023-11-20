@@ -26,7 +26,7 @@ class _HomeState extends State<Home> {
         bucket: bucket,
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.qr_code_scanner_sharp),
+        child: Icon(Icons.document_scanner_rounded),
         onPressed: () {},
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
