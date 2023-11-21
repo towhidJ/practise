@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practise/widgets/home_other_service_part.dart';
 import 'package:practise/widgets/home_part_one.dart';
 import 'package:practise/widgets/home_slider_part.dart';
 
@@ -122,7 +123,7 @@ class _HomeFragmentState extends State<HomeFragment> {
               ],
             )),
         body: ListView(
-          children: [HomePartOne(), SliderPartHome()],
+          children: [HomePartOne(), SliderPartHome(), OtherServicePartHome()],
         ));
   }
 

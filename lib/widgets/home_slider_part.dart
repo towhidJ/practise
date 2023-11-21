@@ -12,35 +12,33 @@ class SliderPartHomeState extends State<SliderPartHome> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Center(
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 15),
       child: CarouselSlider(
         items: [
           Container(
-            margin: EdgeInsets.only(right: 15, left: 15),
             color: Colors.blue,
             child: Center(
               child: Text(
-                'Item 1',
+                'AIBL',
                 style: TextStyle(color: Colors.white, fontSize: 24),
               ),
             ),
           ),
           Container(
-            margin: EdgeInsets.only(right: 15, left: 15),
             color: Colors.green,
             child: Center(
               child: Text(
-                'Item 2',
+                'ICT',
                 style: TextStyle(color: Colors.white, fontSize: 24),
               ),
             ),
           ),
           Container(
-            margin: EdgeInsets.only(right: 15, left: 15),
             color: Colors.orange,
             child: Center(
               child: Text(
-                'Item 3',
+                'Islamic Wallet',
                 style: TextStyle(color: Colors.white, fontSize: 24),
               ),
             ),
@@ -51,7 +49,7 @@ class SliderPartHomeState extends State<SliderPartHome> {
           height: 120,
           viewportFraction: 1.0, // Each item takes up the full width
           autoPlay: true,
-          autoPlayInterval: Duration(seconds: 5),
+          autoPlayInterval: Duration(seconds: 3),
           autoPlayAnimationDuration: Duration(milliseconds: 800),
           pauseAutoPlayOnTouch: true,
           aspectRatio: 2.0,

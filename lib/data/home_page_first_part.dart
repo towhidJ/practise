@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 double ht = 40;
-double wd = 75;
+double wd = 50;
 
 var menuodel = [
   Column(
@@ -126,4 +126,45 @@ var menuodel = [
   //     Text('Bangla QR')
   //   ],
   // ),
+];
+
+var otherService = [
+  Column(
+    children: [
+      Container(
+        child: Image.asset(
+          'assets/icons/donation.png',
+          height: ht,
+          width: wd,
+        ),
+      ),
+      Text('Donate')
+    ],
+  ),
+  Column(
+    children: [
+      Container(
+        child: Image.asset(
+          'assets/icons/coronabd.png',
+          height: ht,
+          width: wd,
+        ),
+      ),
+      Text(
+        'Corona Info',
+      )
+    ],
+  ),
+  Column(
+    children: [
+      Container(
+        child: Image.asset(
+          'assets/icons/surokka.png',
+          height: ht,
+          width: wd,
+        ),
+      ),
+      Text('Vaccine')
+    ],
+  ),
 ];
