@@ -1,5 +1,9 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:practise/data/more_list_item.dart';
+import 'package:practise/utils.dart';
 
 class MoreFragment extends StatefulWidget {
   const MoreFragment({super.key});
@@ -8,6 +12,16 @@ class MoreFragment extends StatefulWidget {
 }
 
 class _MoreFragmentState extends State<MoreFragment> {
+  Uint8List? _image;
+
+  void selectImage() async {
+    Uint8List img = await pickImage(ImageSource.gallery);
+
+    setState(() {
+      _image = img;
+    });
+  }
+
   bool isSwitched = false;
 
   @override
@@ -37,25 +51,41 @@ class _MoreFragmentState extends State<MoreFragment> {
                     children: [
                       Stack(
                         children: [
-                          Container(
-                            margin:
-                                EdgeInsets.only(top: 15, bottom: 20, left: 5),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: Colors.grey,
-                                width: 2.0,
-                              ),
-                            ),
-                            child: CircleAvatar(
-                              backgroundImage:
-                                  AssetImage('assets/images/iw.png'),
-                              radius: 40,
-                            ),
-                          ),
+                          _image != null
+                              ? Container(
+                                  margin: EdgeInsets.only(
+                                      top: 15, bottom: 20, left: 5),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      color: Colors.grey,
+                                      width: 2.0,
+                                    ),
+                                  ),
+                                  child: CircleAvatar(
+                                    backgroundImage: MemoryImage(_image!),
+                                    radius: 40,
+                                  ),
+                                )
+                              : Container(
+                                  margin: EdgeInsets.only(
+                                      top: 15, bottom: 20, left: 5),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      color: Colors.grey,
+                                      width: 2.0,
+                                    ),
+                                  ),
+                                  child: CircleAvatar(
+                                    backgroundImage:
+                                        AssetImage('assets/images/iw.png'),
+                                    radius: 40,
+                                  ),
+                                ),
                           Positioned(
                             child: IconButton(
-                              onPressed: () {},
+                              onPressed: selectImage,
                               icon: Icon(Icons.add_a_photo),
                             ),
                             bottom: 10,
