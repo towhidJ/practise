@@ -60,13 +60,14 @@ var menuodel = [
     children: [
       Container(
         child: Image.asset(
-          'assets/images/mobile_recharge.jpg',
+          'assets/icons/smartphone.png',
           height: ht,
           width: wd,
         ),
       ),
       Text(
         'Mobile Recharge',
+        style: TextStyle(fontSize: 13),
       )
     ],
   ),
