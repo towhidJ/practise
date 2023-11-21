@@ -35,19 +35,33 @@ class _MoreFragmentState extends State<MoreFragment> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        margin: EdgeInsets.only(top: 15, bottom: 20, left: 5),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: Colors.grey,
-                            width: 2.0,
+                      Stack(
+                        children: [
+                          Container(
+                            margin:
+                                EdgeInsets.only(top: 15, bottom: 20, left: 5),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Colors.grey,
+                                width: 2.0,
+                              ),
+                            ),
+                            child: CircleAvatar(
+                              backgroundImage:
+                                  AssetImage('assets/images/iw.png'),
+                              radius: 40,
+                            ),
                           ),
-                        ),
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage('assets/images/iw.png'),
-                          radius: 40,
-                        ),
+                          Positioned(
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.add_a_photo),
+                            ),
+                            bottom: 10,
+                            left: 50,
+                          )
+                        ],
                       ),
                       Container(
                         child: Column(
