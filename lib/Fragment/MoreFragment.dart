@@ -3,6 +3,8 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:practise/data/more_list_item.dart';
+import 'package:practise/pages/limit_charges.dart';
+import 'package:practise/pages/my_qr_code.dart';
 import 'package:practise/utils.dart';
 
 class MoreFragment extends StatefulWidget {
@@ -23,6 +25,33 @@ class _MoreFragmentState extends State<MoreFragment> {
   }
 
   bool isSwitched = false;
+
+  void showLoadingAnimation(BuildContext context, int index) {
+    showDialog(
+      context: context,
+      barrierDismissible: false, // Prevent dismissing the dialog
+      builder: (context) {
+        return Center(
+          child: Center(
+            child: Image(image: AssetImage('assets/images/loading.gif')),
+          ),
+        );
+      },
+    );
+
+    const map = {0: MyQRPage(), 2: LimitAndChargePage()};
+    // Simulate a short delay before navigating
+    Future.delayed(Duration(seconds: 1), () {
+      // Hide the loading animation dialog
+      Navigator.of(context).pop();
+
+      // Navigate to the next page
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => map[index]!),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -179,6 +208,9 @@ class _MoreFragmentState extends State<MoreFragment> {
                           padding: EdgeInsets.zero,
                           itemBuilder: (context, index) {
                             return GestureDetector(
+                              onTap: () {
+                                showLoadingAnimation(context, index);
+                              },
                               child: SizedBox(
                                   height: 47, child: morelistItem[index]),
                             );
