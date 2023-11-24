@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:practise/data/more_list_item.dart';
 import 'package:practise/pages/limit_charges.dart';
 import 'package:practise/pages/my_qr_code.dart';
+import 'package:practise/pages/statement.dart';
 import 'package:practise/utils.dart';
 
 class MoreFragment extends StatefulWidget {
@@ -39,7 +40,7 @@ class _MoreFragmentState extends State<MoreFragment> {
       },
     );
 
-    const map = {0: MyQRPage(), 2: LimitAndChargePage()};
+    const map = {0: MyQRPage(), 1: StatementPage(), 2: LimitAndChargePage()};
     // Simulate a short delay before navigating
     Future.delayed(Duration(seconds: 1), () {
       // Hide the loading animation dialog
