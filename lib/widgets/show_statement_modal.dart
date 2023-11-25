@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:practise/data/statement_dummy_list.dart';
 
 import '../model/Transaction.dart';
 
-void showModal(BuildContext context, Transaction item) {
+void showModal(BuildContext context, TransactionModel item) {
   showModalBottomSheet(
     context: context,
     builder: (BuildContext context) {
       return SizedBox(
-        height: 260,
+        height: 270,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.only(top: 16.0, bottom: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                item.transName,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              Padding(
+                padding: EdgeInsets.all(8),
+                child: Text(
+                  item.tType,
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
               ),
               Table(
-                border: TableBorder.all(color: Colors.white38),
+                border: TableBorder.all(color: Colors.black12, width: 1),
                 defaultVerticalAlignment: TableCellVerticalAlignment.top,
                 children: [
                   TableRow(children: [
@@ -29,7 +31,7 @@ void showModal(BuildContext context, Transaction item) {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [Text("Name:"), Text(item.name!)],
+                        children: [Text("Name:"), Text(item.tName!)],
                       ),
                     )),
                     TableCell(
@@ -40,7 +42,7 @@ void showModal(BuildContext context, Transaction item) {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text("A/C No:"),
-                                Text(item.accNumber!)
+                                Text(item.tAccNumber!)
                               ],
                             )))
                   ]),
@@ -51,10 +53,7 @@ void showModal(BuildContext context, Transaction item) {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Amount:"),
-                          Text(item.amount.toString())
-                        ],
+                        children: [Text("Amount:"), Text(item.tAmt.toString())],
                       ),
                     )),
                     TableCell(
@@ -65,7 +64,7 @@ void showModal(BuildContext context, Transaction item) {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text("Charge:"),
-                                Text(item.charge.toString())
+                                Text(item.tCharge.toString())
                               ],
                             )))
                   ]),
@@ -78,7 +77,7 @@ void showModal(BuildContext context, Transaction item) {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Date & Time:"),
-                          Text(getCurrentDate())
+                          Text(item.tTime.toString())
                         ],
                       ),
                     )),
@@ -94,22 +93,16 @@ void showModal(BuildContext context, Transaction item) {
                               ],
                             )))
                   ]),
-                  TableRow(children: [
-                    TableCell(
-                        child: Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [Text("Reference:"), Text(item.reference)],
-                      ),
-                    )),
-                    TableCell(
-                      child: SizedBox(),
-                    ),
-                  ]),
                 ],
               ),
+              Padding(
+                padding: EdgeInsets.only(left: 8, right: 8, top: 8, bottom: 2),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [Text("Reference:"), Text(item.tReference)],
+                ),
+              )
             ],
           ),
         ),

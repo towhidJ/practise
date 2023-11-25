@@ -16,6 +16,7 @@ class _HomeFragmentState extends State<HomeFragment> {
 
   @override
   Widget build(BuildContext context) {
+    // setStatusBarColor(Colors.green);
     return Scaffold(
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(80),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practise/data/home_page_first_part.dart';
-
-import '../Fragment/MoreFragment.dart';
+import 'package:practise/pages/Send_money.dart';
 
 class HomePartOne extends StatefulWidget {
   const HomePartOne({super.key});
@@ -13,7 +12,7 @@ class HomePartOne extends StatefulWidget {
 class HomePartOneState extends State<HomePartOne> {
   double scaleFactor = 1.0;
 
-  void showLoadingAnimation(BuildContext context) {
+  void showLoadingAnimation(BuildContext context, int index) {
     showDialog(
       context: context,
       barrierDismissible: false, // Prevent dismissing the dialog
@@ -25,6 +24,7 @@ class HomePartOneState extends State<HomePartOne> {
         );
       },
     );
+    const map = {0: SendMoneyPage()};
 
     // Simulate a short delay before navigating
     Future.delayed(Duration(seconds: 1), () {
@@ -34,7 +34,7 @@ class HomePartOneState extends State<HomePartOne> {
       // Navigate to the next page
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => MoreFragment()),
+        MaterialPageRoute(builder: (context) => map[index]!),
       );
     });
   }
@@ -56,12 +56,9 @@ class HomePartOneState extends State<HomePartOne> {
                     return GestureDetector(
                       onTap: () {
                         // Check if the first item is tapped (index 0)
-                        if (index == 0) {
-                          showLoadingAnimation(context);
-                        }
-                        if (index == 1) {
-                          showLoadingAnimation(context);
-                        }
+
+                        showLoadingAnimation(context, index);
+
                         // You can add similar navigation logic for other items here
                       },
                       child: Container(

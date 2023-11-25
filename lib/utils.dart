@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 
 pickImage(ImageSource source) async {
@@ -9,4 +10,14 @@ pickImage(ImageSource source) async {
   }
 
   print('No Images Select');
+}
+
+setStatusBarColor(Color color) {
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      statusBarColor: color,
+      statusBarIconBrightness:
+          color.computeLuminance() > 0.5 ? Brightness.dark : Brightness.light,
+    ),
+  );
 }

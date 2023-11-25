@@ -11,10 +11,33 @@ class StatementPage extends StatefulWidget {
 }
 
 class _StatementPageState extends State<StatementPage> {
-  bool isSwitched = false;
+  List<TransactionModel> filteredList = [];
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the filtered list with the original list
+    filteredList.addAll(transactionList);
+  }
+
+  void filterList(int filter) {
+    setState(() {
+      if (filter.isNaN) {
+        // If the filter is empty, show the original list
+        filteredList.clear();
+        filteredList.addAll(transactionList);
+      } else {
+        // Filter the list based on the given criteria (for simplicity, case insensitive matching)
+        filteredList =
+            transactionList.where((item) => item.tCode == filter).toList();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    // setStatusBarColor(Colors.white);
+
+    filteredList.sort((a, b) => b.tId.compareTo(a.tId));
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -49,7 +72,9 @@ class _StatementPageState extends State<StatementPage> {
                               child: Row(
                                 children: [
                                   OutlinedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      filterList(1);
+                                    },
                                     child: Text("+ IN"),
                                     style: OutlinedButton.styleFrom(
                                       primary: Colors.green,
@@ -64,7 +89,9 @@ class _StatementPageState extends State<StatementPage> {
                                     width: 10,
                                   ),
                                   OutlinedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      filterList(2);
+                                    },
                                     child: Text("- OUT"),
                                     style: OutlinedButton.styleFrom(
                                       primary: Colors.red,
@@ -90,13 +117,13 @@ class _StatementPageState extends State<StatementPage> {
                             itemBuilder: (context, index) {
                               return GestureDetector(
                                 onTap: () {
-                                  showModal(context, transactionList[index]);
+                                  showModal(context, filteredList[index]);
                                 },
                                 child: Padding(
                                   padding: EdgeInsets.only(top: 10, bottom: 10),
                                   child: ListTile(
                                       leading: Image.asset(
-                                        transactionList[index].imageUrl,
+                                        filteredList[index].tImage,
                                         height: 50,
                                         width: 50,
                                       ),
@@ -107,15 +134,15 @@ class _StatementPageState extends State<StatementPage> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            transactionList[index].transName,
+                                            filteredList[index].tType,
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold),
                                           ),
-                                          transactionList[index].name != ""
+                                          filteredList[index].tName != ""
                                               ? Text(
-                                                  transactionList[index].name,
+                                                  filteredList[index].tName!,
                                                   style: TextStyle(
                                                       color: Colors.black,
                                                       fontSize: 14,
@@ -129,8 +156,8 @@ class _StatementPageState extends State<StatementPage> {
                                               padding:
                                                   EdgeInsets.only(bottom: 5),
                                               child: Text(
-                                                  transactionList[index]
-                                                      .accNumber,
+                                                  filteredList[index]
+                                                      .tAccNumber!,
                                                   style: TextStyle(
                                                       color: Colors.grey,
                                                       fontSize: 12,
@@ -155,17 +182,17 @@ class _StatementPageState extends State<StatementPage> {
                                               CrossAxisAlignment.end,
                                           children: [
                                             Text(
-                                              'TrxID: ${transactionList[index].transactionID}',
+                                              'TrxID: ${filteredList[index].transactionID}',
                                               style: TextStyle(
                                                 color: Colors.grey,
                                                 fontSize: 12,
                                               ),
                                             ),
                                             Text(
-                                                '৳ ${transactionList[index].type == "OUT" ? -transactionList[index].amount : transactionList[index].amount}',
-                                                style: transactionList[index]
-                                                            .type ==
-                                                        "IN"
+                                                '৳ ${filteredList[index].tCode == 2 ? -filteredList[index].tAmt : filteredList[index].tAmt}',
+                                                style: filteredList[index]
+                                                            .tCode ==
+                                                        1
                                                     ? TextStyle(
                                                         color: Colors.green,
                                                         fontSize: 17,
@@ -196,7 +223,7 @@ class _StatementPageState extends State<StatementPage> {
                                 thickness: 1,
                               );
                             },
-                            itemCount: transactionList.length),
+                            itemCount: filteredList.length),
                       ))
                     ]),
               ),
