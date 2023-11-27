@@ -16,7 +16,7 @@ void showModal(BuildContext context, TransactionModel item) {
               Padding(
                 padding: EdgeInsets.all(8),
                 child: Text(
-                  item.tType,
+                  item.tType!,
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -89,7 +89,7 @@ void showModal(BuildContext context, TransactionModel item) {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text("TrxID:"),
-                                Text(item.transactionID)
+                                Text(item.transactionID!)
                               ],
                             )))
                   ]),
@@ -100,7 +100,7 @@ void showModal(BuildContext context, TransactionModel item) {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [Text("Reference:"), Text(item.tReference)],
+                  children: [Text("Reference:"), Text(item.tReference!)],
                 ),
               )
             ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:practise/model/Transaction.dart';
 import 'package:practise/widgets/send_money_dialog.dart';
 
 class SendMoneyPage extends StatefulWidget {
@@ -13,6 +14,15 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController _textNumberController = TextEditingController();
   TextEditingController _textAmtController = TextEditingController();
+  TextEditingController _textRefController = TextEditingController();
+
+  TransactionModel _transtion = TransactionModel();
+  Map<String, dynamic> item = {
+    "number": "",
+    "amount": 0.0,
+    "ref": "",
+    "pin": 0
+  };
 
   TextEditingController _textPinController = TextEditingController();
   // late TransactionModel item;
@@ -234,7 +244,14 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
                                 onPressed: () {
                                   if (_formKey.currentState?.validate() ??
                                       false) {
-                                    showSendMoneyDialog(context);
+                                    item['number'] = _textNumberController.text;
+                                    item['amount'] = double.parse(
+                                        _textNumberController.text);
+                                    item['ref'] = _textNumberController.text;
+                                    item['pin'] =
+                                        int.parse(_textNumberController.text);
+
+                                    showSendMoneyDialog(context, item);
                                   }
 
                                   // Access the text entered in the TextField

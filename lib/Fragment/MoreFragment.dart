@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:practise/data/more_list_item.dart';
 import 'package:practise/pages/limit_charges.dart';
+import 'package:practise/pages/login_page.dart';
 import 'package:practise/pages/my_qr_code.dart';
 import 'package:practise/pages/statement.dart';
 import 'package:practise/utils.dart';
@@ -158,7 +159,12 @@ class _MoreFragmentState extends State<MoreFragment> {
                     children: [
                       IconButton(
                           padding: EdgeInsets.only(right: 40, top: 20),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginPage()));
+                          },
                           icon: Icon(
                             Icons.logout,
                             size: 40,

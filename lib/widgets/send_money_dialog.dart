@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void showSendMoneyDialog(BuildContext context) {
+void showSendMoneyDialog(BuildContext context, Map<String, dynamic> item) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -30,7 +30,7 @@ void showSendMoneyDialog(BuildContext context) {
               height: 4,
             ),
             Text(
-              "Failed",
+              item['number'],
               style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w300,
                 color: Colors.grey,

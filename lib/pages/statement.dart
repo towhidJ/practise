@@ -12,6 +12,7 @@ class StatementPage extends StatefulWidget {
 
 class _StatementPageState extends State<StatementPage> {
   List<TransactionModel> filteredList = [];
+
   @override
   void initState() {
     super.initState();
@@ -37,7 +38,7 @@ class _StatementPageState extends State<StatementPage> {
   Widget build(BuildContext context) {
     // setStatusBarColor(Colors.white);
 
-    filteredList.sort((a, b) => b.tId.compareTo(a.tId));
+    filteredList.sort((a, b) => b.tId!.compareTo(a.tId!));
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -123,7 +124,7 @@ class _StatementPageState extends State<StatementPage> {
                                   padding: EdgeInsets.only(top: 10, bottom: 10),
                                   child: ListTile(
                                       leading: Image.asset(
-                                        filteredList[index].tImage,
+                                        filteredList[index].tImage!,
                                         height: 50,
                                         width: 50,
                                       ),
@@ -134,7 +135,7 @@ class _StatementPageState extends State<StatementPage> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            filteredList[index].tType,
+                                            filteredList[index].tType!,
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 18,
@@ -182,14 +183,14 @@ class _StatementPageState extends State<StatementPage> {
                                               CrossAxisAlignment.end,
                                           children: [
                                             Text(
-                                              'TrxID: ${filteredList[index].transactionID}',
+                                              'TrxID: ${filteredList[index].transactionID!}',
                                               style: TextStyle(
                                                 color: Colors.grey,
                                                 fontSize: 12,
                                               ),
                                             ),
                                             Text(
-                                                '৳ ${filteredList[index].tCode == 2 ? -filteredList[index].tAmt : filteredList[index].tAmt}',
+                                                '৳ ${filteredList[index].tCode == 2 ? -filteredList[index].tAmt! : filteredList[index].tAmt!}',
                                                 style: filteredList[index]
                                                             .tCode ==
                                                         1

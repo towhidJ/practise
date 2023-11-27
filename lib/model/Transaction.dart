@@ -1,35 +1,33 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
-import 'package:practise/data/statement_dummy_list.dart';
-
 class TransactionModel {
-  int tId;
-  String transactionID;
-  String tImage = "";
-  String tType = "";
+  late int? tId;
+  late String? transactionID;
+  late String? tImage;
+  late String? tType;
   late String? tName;
-  double tAmt;
-  double tCharge;
+  late double? tAmt;
+  late double? tCharge;
   late String? tAccNumber;
-  String? tTime = getCurrentDate();
-  int tCode = 0;
-  String tReference = "";
+  late String? tTime;
+  late int? tCode;
+  late String? tReference;
   TransactionModel({
-    required this.tId,
-    required this.transactionID,
-    required this.tImage,
-    required this.tType,
-    required this.tName,
-    required this.tAmt,
-    required this.tCharge,
+    this.tId,
+    this.transactionID,
+    this.tImage,
+    this.tType,
+    this.tName,
+    this.tAmt,
+    this.tCharge,
     this.tTime,
-    required this.tCode,
-    required this.tReference,
+    this.tCode,
+    this.tReference,
     this.tAccNumber,
   });
 }
 
-final List<TransactionModel> transactionList = [
+List<TransactionModel> transactionList = [
   TransactionModel(
     tId: 1,
     tImage: "assets/icons/iw.png",
