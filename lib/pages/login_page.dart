@@ -1,6 +1,9 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:practise/model/UserModel.dart';
 import 'package:practise/screens/home.dart';
+import 'package:practise/widgets/login_dialog.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -165,15 +168,16 @@ class _LoginPageState extends State<LoginPage> {
                                 onPressed: () {
                                   if (_formKey.currentState?.validate() ??
                                       false) {
-                                    Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (
-                                          context,
-                                        ) =>
-                                            Home(),
-                                      ),
-                                    );
+                                    handleLogin();
+                                    // Navigator.pushReplacement(
+                                    //   context,
+                                    //   MaterialPageRoute(
+                                    //     builder: (
+                                    //       context,
+                                    //     ) =>
+                                    //         Home(),
+                                    //   ),
+                                    // );
                                   }
                                 },
                                 child: Text(
@@ -190,5 +194,62 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  void handleLogin() {
+    String enteredUsername = _textNumber.text;
+    String enteredPassword = _textPin.text;
+    userList.forEach((e) {
+      if (e.phone == enteredUsername) {
+        print("ok");
+      } else {
+        print("no");
+      }
+    });
+    // Check if the entered username and password match any user in the list
+    var matchingUser = userList.firstWhereOrNull(
+        (user) => user.phone == enteredUsername && user.pin == enteredPassword);
+    print(matchingUser);
+    if (matchingUser != null) {
+      // Successful login
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (
+            context,
+          ) =>
+              Home(),
+        ),
+      );
+    } else {
+      // Failed login
+      loginDialog(context);
+      // showDialog(
+      //   context: context,
+      //   builder: (BuildContext context) {
+      //     return AlertDialog(
+      //       title: Text('Login Failed'),
+      //       content: Text('Invalid username or password.'),
+      //       actions: [
+      //         TextButton(
+      //           onPressed: () {
+      //             Navigator.of(context).pop();
+      //           },
+      //           child: Text('OK'),
+      //         ),
+      //       ],
+      //     );
+      //   },
+      // );
+    }
+  }
+}
+
+extension IterableExtension<E> on Iterable<E> {
+  E? firstWhereOrNull(bool Function(E element) test) {
+    for (final E element in this) {
+      if (test(element)) return element;
+    }
+    return null;
   }
 }

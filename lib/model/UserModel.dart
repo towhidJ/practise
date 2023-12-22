@@ -4,7 +4,7 @@ class User {
   String name;
   String phone;
   double balance;
-  int pin;
+  String pin;
   User({
     required this.id,
     required this.name,
@@ -12,9 +12,9 @@ class User {
     this.balance = 0.0,
     required this.pin,
   });
-
-  List<User> userList = [
-    User(id: null, name: "Towhidul Islam", phone: "01521401825", pin: 2580),
-    User(id: null, name: "Towhidul Islam", phone: "01919392146", pin: 2580)
-  ];
 }
+
+List<User> userList = [
+  User(id: null, name: "Towhidul Islam", phone: "01521401825", pin: "2580"),
+  User(id: null, name: "Towhidul Islam", phone: "01919392146", pin: "2580")
+];

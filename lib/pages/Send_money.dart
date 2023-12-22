@@ -21,7 +21,7 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
     "number": "",
     "amount": 0.0,
     "ref": "",
-    "pin": 0
+    "pin": ""
   };
 
   TextEditingController _textPinController = TextEditingController();
@@ -248,8 +248,7 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
                                     item['amount'] = double.parse(
                                         _textNumberController.text);
                                     item['ref'] = _textNumberController.text;
-                                    item['pin'] =
-                                        int.parse(_textNumberController.text);
+                                    item['pin'] = _textNumberController.text;
 
                                     showSendMoneyDialog(context, item);
                                   }
