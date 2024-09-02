@@ -17,6 +17,7 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
   TextEditingController _textRefController = TextEditingController();
 
   TransactionModel _transtion = TransactionModel();
+  List<TransactionModel> trans = transactionList;
   Map<String, dynamic> item = {
     "number": "",
     "amount": 0.0,
@@ -126,6 +127,7 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
                           height: 80,
                           alignment: Alignment.center,
                           child: TextFormField(
+                            controller: _textRefController,
                             style: textStyleInput,
                             textAlign: TextAlign.center,
                             decoration: InputDecoration(
@@ -246,16 +248,31 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
                                       false) {
                                     item['number'] = _textNumberController.text;
                                     item['amount'] = double.parse(
-                                        _textNumberController.text);
-                                    item['ref'] = _textNumberController.text;
-                                    item['pin'] = _textNumberController.text;
+                                        _textAmtController.text);
+                                    item['ref'] = _textRefController.text;
+                                    item['pin'] = _textPinController.text;
+                                  _transtion.tImage="assets/icons/iw.png";
+                                      _transtion.tType= "Send money";
+                                      _transtion.tName= "Salman";
+                                      _transtion.tCharge= 10.0;
+                                      _transtion.tTime= "7:20 AM 22/08/2022";
+                                      _transtion.tCode= 2;
+                                    
+                                      _transtion.transactionID= '5465353275';
+                                     _transtion.tId=trans.length+1;
 
+                                     _transtion.tAccNumber= _textNumberController.text;
+                                    _transtion.tReference = _textRefController.text;
+                                    _transtion.tAmt=double.parse(
+                                        _textAmtController.text);
+
+                                        trans.add(_transtion);
                                     showSendMoneyDialog(context, item);
                                   }
 
                                   // Access the text entered in the TextField
                                 },
-                                child: Text('NEXT'),
+                                child: Text('SEND'),
                               )),
                         )
                       ],

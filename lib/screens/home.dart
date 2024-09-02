@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-        height: 65,
+        height: 70,
         elevation: 8.0,
         shape: CircularNotchedRectangle(),
         notchMargin: 10,
@@ -62,7 +62,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 40),
+              margin: EdgeInsets.only(top: 25),
               child: Column(children: [
                 Text(
                   "Scan QR",

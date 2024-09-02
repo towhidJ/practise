@@ -20,7 +20,7 @@ class SliderPartHomeState extends State<SliderPartHome> {
             color: Colors.blue,
             child: Center(
               child: Text(
-                'AIBL',
+                'GERP',
                 style: TextStyle(color: Colors.white, fontSize: 24),
               ),
             ),
@@ -38,7 +38,7 @@ class SliderPartHomeState extends State<SliderPartHome> {
             color: Colors.orange,
             child: Center(
               child: Text(
-                'Islamic Wallet',
+                'T Pay',
                 style: TextStyle(color: Colors.white, fontSize: 24),
               ),
             ),

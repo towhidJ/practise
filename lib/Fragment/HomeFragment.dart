@@ -87,7 +87,7 @@ class _HomeFragmentState extends State<HomeFragment> {
                             AnimatedOpacity(
                                 opacity: _isBalanceShown ? 1 : 0,
                                 duration: Duration(milliseconds: 500),
-                                child: Text('৳ 10',
+                                child: Text('৳ 500560',
                                     style: TextStyle(color: Colors.green))),
 
                             //Balance

@@ -7,9 +7,9 @@ void showModal(BuildContext context, TransactionModel item) {
     context: context,
     builder: (BuildContext context) {
       return SizedBox(
-        height: 270,
+        height: 300,
         child: Padding(
-          padding: const EdgeInsets.only(top: 16.0, bottom: 16),
+          padding: const EdgeInsets.only(top: 14.0, bottom: 14),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

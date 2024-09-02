@@ -121,7 +121,7 @@ class _StatementPageState extends State<StatementPage> {
                                   showModal(context, filteredList[index]);
                                 },
                                 child: Padding(
-                                  padding: EdgeInsets.only(top: 10, bottom: 10),
+                                  padding: EdgeInsets.only(top: 1, bottom: 1),
                                   child: ListTile(
                                       leading: Image.asset(
                                         filteredList[index].tImage!,
@@ -138,7 +138,7 @@ class _StatementPageState extends State<StatementPage> {
                                             filteredList[index].tType!,
                                             style: TextStyle(
                                                 color: Colors.black,
-                                                fontSize: 18,
+                                                fontSize: 16,
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           filteredList[index].tName != ""
@@ -155,24 +155,24 @@ class _StatementPageState extends State<StatementPage> {
                                                 ),
                                           Padding(
                                               padding:
-                                                  EdgeInsets.only(bottom: 5),
+                                                  EdgeInsets.only(bottom: 1),
                                               child: Text(
                                                   filteredList[index]
                                                       .tAccNumber!,
                                                   style: TextStyle(
                                                       color: Colors.grey,
-                                                      fontSize: 12,
+                                                      fontSize: 10,
                                                       fontWeight:
                                                           FontWeight.w500)))
                                         ],
                                       ),
                                       subtitle: Padding(
                                           padding:
-                                              EdgeInsets.symmetric(vertical: 5),
+                                              EdgeInsets.symmetric(vertical: 1),
                                           child: Text(getCurrentDate(),
                                               style: TextStyle(
                                                   color: Colors.grey,
-                                                  fontSize: 10,
+                                                  fontSize: 8,
                                                   fontWeight:
                                                       FontWeight.bold))),
                                       trailing: SingleChildScrollView(
@@ -186,7 +186,7 @@ class _StatementPageState extends State<StatementPage> {
                                               'TrxID: ${filteredList[index].transactionID!}',
                                               style: TextStyle(
                                                 color: Colors.grey,
-                                                fontSize: 12,
+                                                fontSize: 10,
                                               ),
                                             ),
                                             Text(
@@ -196,20 +196,20 @@ class _StatementPageState extends State<StatementPage> {
                                                         1
                                                     ? TextStyle(
                                                         color: Colors.green,
-                                                        fontSize: 17,
+                                                        fontSize: 15,
                                                         fontWeight:
                                                             FontWeight.w600)
                                                     : TextStyle(
                                                         color: Colors.red,
-                                                        fontSize: 17,
+                                                        fontSize: 15,
                                                         fontWeight:
                                                             FontWeight.w600)),
                                             Padding(
                                               padding: EdgeInsets.only(
-                                                  bottom: 5, top: 5),
+                                                  bottom: 1, top: 1),
                                               child: Icon(
                                                 Icons.arrow_forward_ios,
-                                                size: 15,
+                                                size: 12,
                                               ),
                                             )
                                           ],

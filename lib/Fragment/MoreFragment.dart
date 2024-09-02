@@ -69,13 +69,13 @@ class _MoreFragmentState extends State<MoreFragment> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 215,
+            height: 220,
             width: double.infinity,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left: 5, top: 5),
+                  padding: EdgeInsets.only(left: 5, top: 2),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,

@@ -67,7 +67,7 @@ var menuodel = [
       ),
       Text(
         'Mobile Recharge',
-        style: TextStyle(fontSize: 13),
+       style: TextStyle(fontSize: 5),
       )
     ],
   ),

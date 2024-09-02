@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practise/screens/charge_rate.dart';
 
 class LimitAndChargePage extends StatefulWidget {
   const LimitAndChargePage({super.key});
@@ -57,7 +58,19 @@ class LimitAndChargePageState extends State<LimitAndChargePage>
               labelStyle: TextStyle(fontWeight: FontWeight.bold),
               controller: _tabController,
               tabs: _tabs,
+              indicatorColor: Colors.green,
             ),
+            Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: [
+                ChargeRate(),
+                Center(child: Text('DAILY content')),
+                Center(child: Text('MONTHLY content')),
+                Center(child: Text('RANGES content')),
+              ],
+            )
+            )
           ],
         ),
       ),
