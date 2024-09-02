@@ -78,7 +78,7 @@ class _StatementPageState extends State<StatementPage> {
                                     },
                                     child: Text("+ IN"),
                                     style: OutlinedButton.styleFrom(
-                                      primary: Colors.green,
+                                      foregroundColor: Colors.green,
                                       // , // Text color
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(
@@ -95,7 +95,7 @@ class _StatementPageState extends State<StatementPage> {
                                     },
                                     child: Text("- OUT"),
                                     style: OutlinedButton.styleFrom(
-                                      primary: Colors.red,
+                                      foregroundColor: Colors.red,
                                       // , // Text color
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(
